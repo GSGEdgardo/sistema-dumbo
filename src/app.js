@@ -1,5 +1,8 @@
-import express from 'express'
-const app = express()
+import express from 'express';
+import morgan from 'morgan';
 
-app.listen(3000)
-console.log('Server on port', 3000)
+const app = express()
+app.use(morgan('dev'));
+
+
+export default app;
