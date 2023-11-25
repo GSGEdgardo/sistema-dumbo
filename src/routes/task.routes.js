@@ -8,12 +8,11 @@ import {
     deleteTask,
 } from '../controllers/task.controller.js';
 import { validateSchema } from "../middleware/validator.middleware.js";
-import { registerSchema, loginSchema } from "../schemas/auth.schema.js";
 import { createTaskSchema } from '../schemas/task.schema.js';
 
 const router = Router();
 //obtener
-router.get('/tasks', authRequired, getTasks)
+router.get('/tasks', getTasks)
 //obtener uno solo
 router.get('/tasks/:id', authRequired, getTask)
 //crear

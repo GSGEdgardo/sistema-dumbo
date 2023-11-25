@@ -1,32 +1,30 @@
 import User from "../models/user.model.js";
+import Client from "../models/client.models.js";
 import bcrypt from 'bcryptjs';
 import {createAccessToken} from '../libs/jwt.js';
 
 export const register = async (req, res) => {
-    const { email, password, username, numberId } = req.body;
-
+    const { name, lastName, numberId, email } = req.body;
     try {
-
-        const passwordHash = await bcrypt.hash(password, 10);
-
-        const newUser = new User({
-            username,
+        
+        const newClient = new Client({
+            name,
+            lastName,
+            numberId,
             email,
-            password: passwordHash,
-            numberId
         });
 
-        const userSaved = await newUser.save();
-        const token = await createAccessToken({numberId: userSaved.numberId});
-
+        const clientSaved = await newClient.save();
+        const token = await createAccessToken({numberId: clientSaved.numberId});
         res.cookie('token', token)
         res.json({
-            id: userSaved._id,
-            username: userSaved.username,
-            email: userSaved.email,
-            numberId: userSaved.numberId,
-            createdAt: userSaved.createdAt,
-            updatedAt: userSaved.updatedAt,
+            id: clientSaved._id,
+            name: clientSaved.name,
+            lastName: clientSaved.lastName,
+            numberId: clientSaved.numberId,
+            email: clientSaved.email,
+            createdAt: clientSaved.createdAt,
+            updatedAt: clientSaved.updatedAt,
         });
     } catch (error) {
         res.status(500).json({messagge: error.message});
@@ -66,15 +64,13 @@ export const logout = (req, res) => {
 }
 
 export const profile = async (req, res) => {
-    const userFound = await User.findById(req.user.id)
+    try {
+        // Obtiene todos los clientes desde la base de datos
+        const allClients = await Client.find();
 
-    if(!userFound) return res.status(400).json({ message: "User not found"});
-    return res.json({
-        id:userFound._id,
-        username:userFound.username,
-        email:userFound.email,
-        numberId:userFound.numberId,
-        createdAt:userFound.createdAt,
-        updatedAt:userFound.updatedAt,
-    });
-}
+        // Devuelve la información de todos los clientes
+        res.json(allClients);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

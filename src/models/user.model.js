@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -6,12 +7,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         trime: true,
         unique: true
-    },
-    email:{
-        type: String,
-        required: true,
-        trime: true,
-        unique:true
     },
     password: {
         type: String,
@@ -27,6 +22,7 @@ const userSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
+
 
 export default mongoose.model('User', userSchema)
 
