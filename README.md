@@ -3,7 +3,7 @@
 This project is a MERN (MongoDB, Express.js, React, Node.js) stack application.
 
 ## Technologies Used
-- Node.js (14.xx)
+- Node.js (18.17.1)
 - Express.js
 - MongoDB
 - React
@@ -26,19 +26,21 @@ This project is a MERN (MongoDB, Express.js, React, Node.js) stack application.
 ### Backend
 1. Navigate to the backend directory: `cd sistema-dumbo/src`
 2. Install backend dependencies: `npm install`
-3. Create a .env file in the backend directory with the following content:
+3. Open MongoDB Compass, click the "Edit Connection String" option and replace the localhost URL with the MongoURL below this message
 
 ```bash
-MONGODB_URI=mongodb+srv://EdgardoOrtiz:Gaog_0197@cluster0.1kgwezc.mongodb.net/
+MONGODB_URI=mongodb+srv://EdgardoOrtiz:Gaog_0197@cluster0.1kgwezc.mongodb.net
 ```
-4. Seed the database: `node src/seeder.js`
-5. Start the backend server: `npm run dev`
-6. Backend server URL: [http://localhost:3000](http://localhost:3000)
+4. Click "Connect" and the database will be connected to the backend already
+5. IMPORTANT, this database is a clouster on Mongo Atlas, it already have data inside, I'm going to delete it, but if you want to delete it you need to go into Mongo Compass, inside `test` database, and drop both collections, you can't drop the entire database but you can drop the collections.
+6. Seed the database: if you're on src folder, run `node seeder.js`, if you're not on src folder, run `node src/seeder.js` instead
+7. Start the backend server: `npm run dev`
+8. Backend server URL: [http://localhost:3000](http://localhost:3000)
 
 ### Frontend
-1. Navigate to the frontend directory: `cd sistema-dumbo/client`
+1. Navigate to "sistema-dumbo" folder, use `cd client`
 2. Install frontend dependencies: `npm install`
-3. Start the frontend server: `npm start`
+3. Start the frontend server: `npm run dev`
 4. Frontend server URL: [http://localhost:5173](http://localhost:5173)
 
 ### Postman Collection
