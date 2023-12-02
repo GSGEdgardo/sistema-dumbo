@@ -32,7 +32,7 @@ This project is a MERN (MongoDB, Express.js, React, Node.js) stack application.
 MONGODB_URI=mongodb+srv://EdgardoOrtiz:Gaog_0197@cluster0.1kgwezc.mongodb.net
 ```
 4. Click "Connect" and the database will be connected to the backend already
-5. IMPORTANT, this database is a clouster on Mongo Atlas, it already have data inside, I'm going to delete it, but if you want to delete it you need to go into Mongo Compass, inside `test` database, and drop both collections, you can't drop the entire database but you can drop the collections.
+5. IMPORTANT, this database is a cluster on Mongo Atlas, it already have data inside, I'm going to delete it, but if you want to delete it you need to go into Mongo Compass, inside `test` database, and drop both collections, you can't drop the entire database but you can drop the collections.
 6. Seed the database: if you're on src folder, run `node seeder.js`, if you're not on src folder, run `node src/seeder.js` instead
 7. Start the backend server: `npm run dev`
 8. Backend server URL: [http://localhost:3000](http://localhost:3000)
